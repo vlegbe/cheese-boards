@@ -9,7 +9,7 @@ const Quote = require("./quotes.model")
 // The target belongs to the source and the source has a target
 
 // A book belongs to borrower
-// Book.belongsTo(Borrower, {foreignKey: { name: 'borrower_id'}})
+// Book.belongsTo(Borrower, {foreignKey: 'borrower_id'})
 // add allowNull: false in the foreignKey (and make the value an object { }) to make the association mandatory
 Book.belongsTo(Borrower)
 
