@@ -15,6 +15,7 @@ const Quote = require("./quotes.model")
 Book.belongsTo(Borrower)
 
 // A borrower has a book
+// Borrower.hasOne(Book, {foreignKey: 'borrower_id'})
 Borrower.hasOne(Book)
 
 
