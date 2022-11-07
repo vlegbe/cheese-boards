@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize')
 const db = require('../db/db')
 
-class Book extends Model {}
+class Cheese extends Model {}
 
-Book.init({
+Cheese.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,10 +12,13 @@ Book.init({
     title: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
-},
-{
+}, {
     sequelize: db
 })
 
-module.exports = Book
+module.exports = Cheese

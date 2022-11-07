@@ -1,111 +1,82 @@
-const {Author, Book, Quote, Borrower} = require('../models')
+const { User, Board, Cheese } = require('../models')
 const db = require('./db')
 
-async function seed () {
+async function seed() {
 
     // DROP and CREATE all TABLES
     await db.sync({
         force: true
     })
 
-    await Author.bulkCreate([
-        {
-            name: "Tom Holland"
+    await User.bulkCreate([{
+            name: "Harvey Specter",
+            email: "harveyspecter@suits.com"
         },
         {
-            name: "Karl Popper"
+            name: "Michael Ross",
+            email: "michaelross@suits.com"
         },
         {
-            name: "Imre Lakatos"
+            name: "Rachel Zane",
+            email: "rachelzane@suits.com"
         },
         {
-            name: "Stephen Gaukoreger"
+            name: "Louis Litt",
+            email: "louislitt@suits.com"
         },
         {
-            name: "Claire Carlisle"
+            name: "Donna Paulsen",
+            email: "donnapaulsen@suits.com"
         },
         {
-            name: "Maria Rosa Antognazza"
+            name: "Jessica Pearson",
+            email: "jessicapearson@ssuits.com"
         },
-        {
-            name: "Judith Wolfe"
-        },
-        {
-            name: "Thomas Kuhn"
-        }  
     ])
 
-    await Borrower.bulkCreate([
-        {
-            name: "Albertus Magnus"
+    await Board.bulkCreate([{
+            type: " Firm ",
+            description: "An aged cheddar or white cheddar is delicious, even a really high-quality Parmigiano-Reggiano can be lovely. Pro tip—pair that Parm with some fancy honey! ",
+            rating: 9
         },
         {
-            name: "Nicholas of Cusa"
+            type: "Semi-Firm",
+            description: "Manchego, Gruyère or Comté.",
+            rating: 6
         },
         {
-            name: "Bartolomé de las Casas"
+            type: "Semi-Soft",
+            description: " Fontina, muenster or Gouda. ",
+            rating: 2
         },
         {
-            name: "Simone Weil"
-        },
-        {
-            name: "Nancey Murphy"
+            type: "Soft",
+            description: " Brie, camembert, chèvre—anything you can spread works great for this category.",
+            rating: 7
         }
     ])
-    await Book.bulkCreate([
-        {
-            title: "Leibniz: An Intellectual Biography",
-            AuthorId: 6,
-            BorrowerId: 1
+    await Cheese.bulkCreate([{
+            name: "Mozzarella",
+            description: " Fresh mozzarella is generally white but when seasoned it turns to a light yellow depending on the animal's diet. Due to its high moisture content, it is traditionally served the day after it is made but can be kept in brine for up to a week or longer when sold in vacuum-sealed packages. "
         },
         {
-            title: "Heidegger and Theology",
-            AuthorId: 7
-        },
-        {
-            title: "Spinoza's Religion",
-            AuthorId: 5,
-            BorrowerId: 2
-        },
-        {
-            title: "The Collapse of Mechanism and the Rise of Sensibility: Science and the Shaping of Modernity, 1680-1760",
-            AuthorId: 4
-        },
-        {
-            title: "The Emergence of a Scientific Culture: Science and the Shaping of Modernity, 1210-1685",
-            AuthorId: 4,
-            BorrowerId: 3
-        },
-        {
-            title: "The Natural and the Human: Science and the Shaping of Modernity, 1739-1841",
-            AuthorId: 4
-        },
-        {
-            title: "The Structure of Scientific Revolutions",
-            AuthorId: 8,
-            BorrowerId: 3
-        }                     
-    ])
+            name: "Mature Cheddar",
+            description: "Cheddar cheese (or simply cheddar) is a natural cheese that is relatively hard, off-white (or orange if colourings such as annatto are added), and sometimes sharp-tasting. Cheddar originates from the English village of Cheddar in Somerset."
 
-    Quote.bulkCreate([
-        {
-            quote: "Being that can be understood is language"
         },
         {
-            quote: "Language is the house of being"
+            name: "Red Leicester",
+            description: "Traditionally made wheels are fairly firm and dry, with a friable texture and a slightly sweet, mellow flavour that becomes stronger as the cheese matures."
         },
         {
-            quote: "Educating the mind without educating the heart is no education at all"
+            name: "Parmesan",
+            description: "Parmesan is an Italian hard, granular cheese produced from cows’ milk and aged at least 12 months."
         },
         {
-            quote: "Quality is not an act, it is a habit"
+            name: "Brie",
+            description: " Brie is a soft cow's-milk cheese named after Brie, the French region from which it originated."
         },
-        {
-            quote: "The law is reason, free from passion"
-        },
-        {
-            quote: "Everything changes and nothing stands still"
-        }
+
     ])
 }
 

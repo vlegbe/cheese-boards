@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize')
 const db = require('../db/db')
 
-class Borrower extends Model {}
+class User extends Model {}
 
-Borrower.init({
+User.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,10 +12,13 @@ Borrower.init({
     name: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
-},
-{
+}, {
     sequelize: db
 })
 
-module.exports = Borrower
+module.exports = User

@@ -1,21 +1,20 @@
 const { DataTypes, Model } = require('sequelize')
 const db = require('../db/db')
 
-class Author extends Model {}
+class Board extends Model {}
 
-Author.init({
+Board.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
+    type: {
         type: DataTypes.STRING,
         allowNull: false
     }
-},
-{
+}, {
     sequelize: db
 })
 
-module.exports = Author
+module.exports = { Board }

@@ -1,55 +1,54 @@
-const {Author, Book, Quote, Borrower} = require('../models')
+const { User, Board, Cheese } = require('../models')
 const db = require('../db/db')
 
 async function main() {
 
     /**** one-to-one trials ****/
 
-    // Book borrowed by Borrower with id 1
-    const borrower1 = await Borrower.findByPk(1)
-    // console.log(borrower1)
-    // console.log((await borrower1.getBook()).toJSON())
+    // Cheese picked by User with id 1
+    const user1 = await User.findByPk(1)
+        // console.log(user1)
+        // console.log((await user.getCheese)).toJSON())
 
-    const borrowers = await Borrower.findAll()
-    // console.log(borrowers[0].toJSON())
+    const users = await User.findAll()
+        // console.log(users[0].toJSON())
 
     const book1 = await Book.findByPk(2)
-    // console.log(book1.toJSON().title)
-    // console.log((await book1.setBorrower(borrowers[3])).toJSON())
+        // console.log(cheese1.toJSON().title)
+        // console.log((await book1.setUser(users[3])).toJSON())
 
-    const book = await Book.create({
-        title: 'The Republic'
+    const cheese = await cheese.create({
+        title: 'Brie'
     })
 
-    const borrower = await Borrower.create({
-        name: 'Plato'
+    const user = await user.create({
+        name: 'Harvey Specter'
     })
 
-    await book.setBorrower(borrower)
+    await cheese.setUser(user)
 
     /************** one-to-many *************/
-    const author1 = await Author.findByPk(5)
-    console.table((await author1.getBooks()).map(b => b.toJSON()))
+    const User1 = await User1findByPk(5)
+    console.table((await User1.getBooks()).map(b => b.toJSON()))
 
     // note the plural of countBooks
-    console.log( `Total books: ${await author1.countBooks()}`)
+    console.log(`Total cheese: ${await author1.countCheese()}`)
 
     // using the above defined book1 to check (note the singular)
-    console.log(await author1.hasBook(book1))
+    console.log(await author1.hasCheese(cheese1))
 
 
     /**************** many-to-many *****************/
-    let books = await Book.findAll()
-    const quotes = await Quote.findAll()
-    // console.table(books.map(a => a.toJSON()))
-    await books[0].addQuote(quotes[0])
-    await books[0].addQuote(quotes[1])
-    
-    books = await Book.findAll()
+    let cheeses = await Cheese.findAll()
+        // console.table(books.map(a => a.toJSON()))
+    await cheeses[0].addUser(quotes[0])
+    await cheeses[0].addUser(quotes[1])
 
-    console.table((await books[0].getQuotes()).map(ch => ch.toJSON()))
+    cheeses = await Cheese.findAll()
 
-    console.log(await books[0].removeQuote(quotes[1]))
+    console.table((await cheeses[0].getCheese()).map(ch => ch.toJSON()))
+
+    console.log(await cheeses[0].removeCheese(cheeses[1]))
 
 }
 
